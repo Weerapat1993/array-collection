@@ -1,0 +1,36 @@
+{
+  "name": "array-collection",
+  "version": "0.0.1",
+  "description": "Array Collection Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weerapat1993/array-collection.git"
+  },
+  "keywords": [
+    "array"
+  ],
+  "author": "Weerapat1993",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Weerapat1993/array-collection/issues"
+  },
+  "homepage": "https://github.com/Weerapat1993/array-collection#readme",
+  "dependencies": {
+    "jest": "^20.0.4"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.0",
+    "babel-preset-react-app": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
+}
