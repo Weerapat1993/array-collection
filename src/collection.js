@@ -107,10 +107,7 @@ export class Collection {
     const data = this.data
     const PK = this.primaryKey
     if(this.firstOrFail() === {}) return data
-    const newData = {
-      ...this.firstOrFail(),
-      ...update
-    }
+    const newData = Object.assign({}, this.firstOrFail(), update)
     let newArray = data
     newArray.forEach((item,i) => {
       if(newData[PK] === item[PK]){

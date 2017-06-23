@@ -10,7 +10,9 @@ const data = [
 ]
 
 const newData = {
-  message: 'Hello Chat'
+  chat_id: 2,
+  message: 'Hello Chat',
+  timestamp: new Date().getTime()
 }
 
 const updateDataField = {
@@ -169,10 +171,9 @@ describe ('Array Collection Utility', () => {
   });
 
   it(`should be Array Collection Function : insert`, () => {
-    const collects = new Collection(data, primaryKey)
+    const collects = new Collection([], primaryKey)
     const recieved = collects.insert(newData)
     const expected = [
-      ...data,
       newData
     ]
     expect(recieved).toEqual(expected)
