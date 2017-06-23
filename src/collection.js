@@ -130,6 +130,7 @@ export class Collection {
    */
   insert(insert) {
     return [
+      ...this.data,
       insert
     ]
   }
