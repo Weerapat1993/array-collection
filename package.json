@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Array Collection Javascript",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "jest"
   },
@@ -32,5 +33,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
