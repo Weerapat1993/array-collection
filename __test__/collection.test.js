@@ -45,6 +45,29 @@ const fruits = [
 describe ('Array Collection Utility', () => {
   const primaryKey = 'chat_id'
   const field = primaryKey
+  it(`should be Array Collection Function : select`, () => {
+    const collectsSelect = new Collection(fruits, primaryKey)
+    const recieved = collectsSelect.select(['id','name']).get()
+    const expected = [
+      {
+        id: 1,
+        name: 'Mango',
+      },
+      {
+        id: 2,
+        name: 'Banana',
+      },
+      {
+        id: 3,
+        name: 'Apple',
+      },
+      {
+        id: 4,
+        name: 'Orange',
+      },
+    ]
+    expect(recieved).toEqual(expected)
+  });
   it(`should be Array Collection Function : update : find data`, () => {
     const collects = new Collection(data, primaryKey)
     const recieved = collects.where(field, '=', chatID).update(updateDataField)
@@ -151,6 +174,25 @@ describe ('Array Collection Utility', () => {
     ]
     expect(recieved).toEqual(expected)
   });
+
+  it(`should be Array Collection Function : whereNotIn`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.whereNotIn('id', [1, 2]).get()
+    const expected = [
+      {
+        id: 3,
+        name: 'Apple',
+        price: 50,
+      },
+      {
+        id: 4,
+        name: 'Orange',
+        price: 40,
+      },
+    ]
+    expect(recieved).toEqual(expected)
+  });
+
   it(`should be Array Collection Function : where : catch Error!`, () => {
     const collects = new Collection(undefined, 'id')
     const recieved = collects.get()

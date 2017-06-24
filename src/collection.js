@@ -30,6 +30,37 @@ export class Collection {
   }
 
   /**
+   * Select Field Data in Array
+   * ```javascript
+   * Collection.select(['id','name'])
+   * ``` 
+   * @param {[object]} fieldArray
+   * @return {this} collection
+   */
+  select(fileldArray) {
+    let oldArray = this.data
+    let newArray = []
+    let obj = {}
+    oldArray.forEach((data) => {
+      Object.keys(data).forEach((key) => {
+        fileldArray.forEach((field) => {
+          if (key === field) {
+            obj = {
+              ...obj,
+              [field]: data[field]
+            }
+          }
+        })
+      })
+      newArray.push(obj)
+      obj = {}
+    })
+
+    this.data = newArray
+    return this
+  }
+
+  /**
    * Find Data in Array
    * ```javascript
    * @condition [ === , !== , < , > , <= , >= ]
@@ -71,7 +102,6 @@ export class Collection {
   /**
    * Find Data in Array by []
    * ```javascript
-   * @condition [ === , !== ]
    * Collection.whereIn('id',[1,2])
    * ```
    * @param {'field'} field
@@ -89,6 +119,26 @@ export class Collection {
       })
     })
     this.data = collect
+    return this
+  }
+
+  /**
+   * Find Not Data in Array by []
+   * ```javascript
+   * Collection.whereNotIn('id',[1,2])
+   * ```
+   * @param {'field'} field
+   * @param {[*]} keyArray
+   * @return {this} collection
+   * 
+   */
+  whereNotIn(field, keyArray) {
+    let newArray = this.data
+    const whereIn = this.whereIn(field, keyArray).get()
+    whereIn.forEach((where) => {
+      newArray =newArray.filter((item) => item[field] !== where[field])
+    })
+    this.data = newArray
     return this
   }
 

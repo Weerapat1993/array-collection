@@ -23,9 +23,16 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.0",
     "babel-preset-react-app": "^3.0.0",
+    "eslint": "^4.1.0",
+    "eslint-config-react-app": "^1.0.4",
+    "eslint-plugin-flowtype": "^2.34.0",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "webpack": "^3.0.0"
   },
@@ -37,5 +44,8 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }

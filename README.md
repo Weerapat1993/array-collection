@@ -2,13 +2,15 @@
 
 `Build Collection`
 ```javascript
-const Data = new Collection([], 'primaryKey')
+const Data = new Collection([1,2,3,4], 'primaryKey')
 
 // Select Data => Collection
-Data.where('id', '=', 1)
-Data.whereIn('id', [1,2])
-Data.orderBy('name','asc') => [1,2,3] && [A - Z]
-Data.orderBy('name','desc') => [3,2,1] && [Z - A]
+Data.select(['id','name'])
+Data.where('id', '=', 1).get() => [1]
+Data.whereIn('id', [1,2]).get() => [1,2]
+Data.whereNotIn('id', [1,2]).get() => [3,4]
+Data.orderBy('name','asc').get() => [1,2,3,4] && [A - Z]
+Data.orderBy('name','desc').get() => [4,3,2,1] && [Z - A]
 
 // Insert Data => []
 Data.insert({
@@ -23,5 +25,5 @@ Data.where('id', '=', 1).update({
 
 // Compact Data
 Data.get() => []
-Data.firstOrFail() => {}
+Data.firstOrFail() => {} || Array[0]
 ```
