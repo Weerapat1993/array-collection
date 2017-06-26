@@ -221,6 +221,13 @@ describe ('Array Collection Utility', () => {
     expect(recieved).toEqual(expected)
   });
 
+  it(`should be Array Collection Function : orderBy('name','desc') data is null`, () => {
+    const collects = new Collection([])
+    const recieved = collects.orderBy('name','desc').get()
+    const expected = []
+    expect(recieved).toEqual(expected)
+  });
+
   it(`should be Array Collection Function : orderBy('name','desc') `, () => {
     const collects = new Collection(fruits)
     const recieved = collects.orderBy('name','desc').get()

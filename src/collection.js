@@ -190,9 +190,9 @@ class Collection {
    * @return {array} newArray
    */
   orderBy(field, orderBy) {
-    const data = this.data
+    const data = this.data[0]
     if(data) {
-      const type = typeof data
+      const type = data[field] && typeof data[field]
       if(type === 'number') {
         // sort by value
         switch(orderBy) {
