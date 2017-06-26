@@ -1,5 +1,5 @@
 // Class Collection
-export class Collection {
+class Collection {
   /**
    * Build Array Collection
    * ```javascript
@@ -45,10 +45,7 @@ export class Collection {
       Object.keys(data).forEach((key) => {
         fileldArray.forEach((field) => {
           if (key === field) {
-            obj = {
-              ...obj,
-              [field]: data[field]
-            }
+            obj = Object.assign({}, obj, { [field]: data[field] })
           }
         })
       })

@@ -1,6 +1,3 @@
-const Collection = require('./src/collection').Collection
+const Collection = require('./src/collection')
 
 module.exports = Collection
-exports.test = function() {
-  console.log('array-collection')
-}
