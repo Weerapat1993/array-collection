@@ -190,40 +190,42 @@ class Collection {
    * @return {array} newArray
    */
   orderBy(field, orderBy) {
-    const type = typeof this.data[0][field]
-    if(type === 'number') {
-      // sort by value
-      switch(orderBy) {
-        case 'desc':
-          this.data = this.data.sort((a, b) => b[field] - a[field])
-          break
-        case 'asc': 
-        default:
-          this.data = this.data.sort((a, b) => a[field] - b[field])
-          break
-      }
-    } else if(type === 'string') {
-      // sort by name
-      switch(orderBy) {
-        case 'desc':
-          this.data = this.data.sort((a, b) => {
-            const nameA = a[field].toUpperCase(); // ignore upper and lowercase
-            const nameB = b[field].toUpperCase(); // ignore upper and lowercase
-            if(nameB < nameA) return -1;
-            if(nameB > nameA) return 1;
-            return 0;
-          })
-          break
-        case 'asc': 
-        default:
-          this.data = this.data.sort((a, b) => {
-            const nameA = a[field].toUpperCase(); // ignore upper and lowercase
-            const nameB = b[field].toUpperCase(); // ignore upper and lowercase
-            if(nameA < nameB) return -1;
-            if(nameA > nameB) return 1;
-            return 0;
-          })
-          break
+    if(this.data) {
+      const type = typeof this.data[0][field]
+      if(type === 'number') {
+        // sort by value
+        switch(orderBy) {
+          case 'desc':
+            this.data = this.data.sort((a, b) => b[field] - a[field])
+            break
+          case 'asc': 
+          default:
+            this.data = this.data.sort((a, b) => a[field] - b[field])
+            break
+        }
+      } else if(type === 'string') {
+        // sort by name
+        switch(orderBy) {
+          case 'desc':
+            this.data = this.data.sort((a, b) => {
+              const nameA = a[field].toUpperCase(); // ignore upper and lowercase
+              const nameB = b[field].toUpperCase(); // ignore upper and lowercase
+              if(nameB < nameA) return -1;
+              if(nameB > nameA) return 1;
+              return 0;
+            })
+            break
+          case 'asc': 
+          default:
+            this.data = this.data.sort((a, b) => {
+              const nameA = a[field].toUpperCase(); // ignore upper and lowercase
+              const nameB = b[field].toUpperCase(); // ignore upper and lowercase
+              if(nameA < nameB) return -1;
+              if(nameA > nameB) return 1;
+              return 0;
+            })
+            break
+        }
       }
     }
     return this
