@@ -229,3 +229,5 @@ class Collection {
     return this
   }
 }
+
+module.exports = Collection
