@@ -40,13 +40,13 @@ import Collection from 'array-collection'
 |Functions|Parameters|Types|Return|
 |---|---|---|---|
 |[avg](#avg)                |`field`|`string number`|`number`|
-|[count](#count)            |null   |null|`number`|
-|[first](#first)            |null   |null|`{}`|
-|[firstOrFail](#firstOrFail)|null   |null|`{}`|
+|[count](#count)            |   ||`number`|
+|[first](#first)            |   ||`{}`|
+|[firstOrFail](#firstOrFail)|   ||`{}`|
 |[get](#get)                |`field`|`string number`|`[]`|
 |[max](#max)                |`field`|`string number`|`number`|
 |[min](#min)                |`field`|`string number`|`number`|
-|[toArray](#toArray)        |null   |null|`[]`|
+|[toArray](#toArray)        |   ||`[]`|
 
 ## Data Example
 ```javascript
@@ -90,7 +90,7 @@ Data.count() // result = 4
 
 ## delete
 ```javascript
-Data.delete(2) // result = 52.5
+Data.delete(2)
 
 /*
 fruits = [
