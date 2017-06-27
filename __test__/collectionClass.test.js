@@ -365,4 +365,65 @@ describe ('Array Collection Utility', () => {
     ]
     expect(recieved).toEqual(expected)
   });
+
+  it(`should be Array Collection Function : find`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.find(2).get()
+    const expected = [
+      {
+        id: 2,
+        name: 'Banana',
+        price: 100,
+      },
+    ]
+    expect(recieved).toEqual(expected)
+  });
+
+  it(`should be Array Collection Function : get (no field)`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.find(2).get()
+    const expected = [
+      {
+        id: 2,
+        name: 'Banana',
+        price: 100,
+      },
+    ]
+    expect(recieved).toEqual(expected)
+  });
+
+  it(`should be Array Collection Function : get`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.orderBy('id','asc').get('id')
+    const expected = [1,2,3,4]
+    expect(recieved).toEqual(expected)
+  });
+
+  it(`should be Array Collection Function : sum`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.sum('price')
+    const expected = 210
+    expect(recieved).toEqual(expected)
+  });
+
+  it(`should be Array Collection Function : min`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.min('price')
+    const expected = 20
+    expect(recieved).toEqual(expected)
+  });
+
+  it(`should be Array Collection Function : max`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.max('price')
+    const expected = 100
+    expect(recieved).toEqual(expected)
+  });
+
+  it(`should be Array Collection Function : avg`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.avg('price')
+    const expected = 52.5
+    expect(recieved).toEqual(expected)
+  });
 });

@@ -17,8 +17,32 @@ class Collection {
    * Get Data to Array
    * @return {[]} data
    */
-  get() {
+  toArray() {
     return this.data
+  }
+
+  /**
+   * Get Field in Data Array
+   * @param {string} field
+   * @return {[]} data
+   */
+  get(field) {
+    if(field) {
+      let data = []
+      this.data.forEach((item) => {
+        data.push(item[field])
+      })
+      return data
+    } 
+    return this.toArray()
+  }
+
+  /**
+   * Get Data to Object
+   * @return {object} 
+   */
+  first() {
+    return this.data[0]
   }
 
   /**
@@ -97,6 +121,19 @@ class Collection {
   }
 
   /**
+   * Find data by Primary Key
+   * ```javascript
+   * Collection.find(1)
+   * ```
+   * @param {stirng|number} key
+   * @return {this} 
+   */
+  find(key) {
+    this.data = this.where(this.primaryKey, '=', key).get()
+    return this
+  }
+
+  /**
    * Find Data in Array by []
    * ```javascript
    * Collection.whereIn('id',[1,2])
@@ -154,7 +191,7 @@ class Collection {
     const data = this.data
     const PK = this.primaryKey
     if(this.firstOrFail() === {}) return data
-    const newData = Object.assign({}, this.firstOrFail(), update)
+    const newData = Object.assign({}, this.first(), update)
     let newArray = data
     newArray.forEach((item,i) => {
       if(newData[PK] === item[PK]){
@@ -176,7 +213,7 @@ class Collection {
    * @return {[]} newArray
    */
   insert(insert) {
-    let check = this.where(this.primaryKey,'=',insert[this.primaryKey]).get().length
+    let check = this.where(this.primaryKey,'=',insert[this.primaryKey]).count()
     if(check) return this.data
     return [
       ...this.data,
@@ -227,7 +264,7 @@ class Collection {
         // sort by name
         switch(orderBy) {
           case 'desc':
-            this.data = this.data.sort((a, b) => {
+            this.data.sort((a, b) => {
               const nameA = a[field].toUpperCase(); // ignore upper and lowercase
               const nameB = b[field].toUpperCase(); // ignore upper and lowercase
               if(nameB < nameA) return -1;
@@ -237,7 +274,7 @@ class Collection {
             break
           case 'asc': 
           default:
-            this.data = this.data.sort((a, b) => {
+            this.data.sort((a, b) => {
               const nameA = a[field].toUpperCase(); // ignore upper and lowercase
               const nameB = b[field].toUpperCase(); // ignore upper and lowercase
               if(nameA < nameB) return -1;
@@ -250,6 +287,45 @@ class Collection {
     }
     return this
   }
+
+  /**
+   * Sum Data in Array
+   * @param {string} field 
+   * @return {number}
+   */
+  sum(field) {
+    return this.get(field).reduce((a, b) => a + b , 0)
+  }
+
+  /**
+   * Max Data in Array
+   * @param {string} field 
+   * @return {number}
+   */
+  min(field) {
+    return this.orderBy(field,'asc').get(field)[0]
+  }
+
+  /**
+   * Max Data in Array
+   * @param {string} field 
+   * @return {number}
+   */
+  max(field) {
+    return this.orderBy(field,'desc').get(field)[0]
+  }
+
+  /**
+   * Max Data in Array
+   * @param {string} field 
+   * @return {number}
+   */
+  avg(field) {
+    const count = this.count()
+    return this.get(field).reduce((a, b) => a + b , 0) / count
+  }
 }
 
 module.exports = Collection
+
+

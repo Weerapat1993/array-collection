@@ -19,6 +19,116 @@ $ npm install
 import Collection from 'array-collection'
 ```
 
+## Table of Contents
+
+### SQL Query
+
+|Functions|Parameters|Types
+|---|---|---|
+|[delete](#delete)|`primaryKey`|`any`|
+|[insert](#insert)|`newData`|`object`|
+|[orderBy](#orderBy)|`field` , `sort`|`asc|desc`|
+|[select](#select)|`field`|`string`|
+|[update](#update)|`updateData`|`object`|
+|[where](#where)|`field` , `condition` , `key`|`string` , `condition` , `string|number`|
+|[whereIn](#whereIn)|`field` , `keyArray`|`[string|number]`|
+|[whereNotIn](#whereNotIn)|`field` , `keyArray`|`[string|number]`|
+
+### Return Data 
+
+
+|Functions|Parameters|Types|Return|
+|---|---|---|---|
+|[avg](#avg)                |`field`|`string|number`|`number`|
+|[count](#count)            |null   |null|`number`|
+|[first](#first)            |null   |null|`{}`|
+|[firstOrFail](#firstOrFail)|null   |null|`{}`|
+|[get](#get)                |`field`|`string|number`|`[]`|
+|[max](#max)                |`field`|`string|number`|`number`|
+|[min](#min)                |`field`|`string|number`|`number`|
+|[toArray](#toArray)        |null   |null|`[]`|
+
+## Data Example
+```javascript
+const fruits = [
+  {
+    id: 1,
+    name: 'Mango',
+    price: 20,
+  },
+  {
+    id: 2,
+    name: 'Banana',
+    price: 100,
+  },
+  {
+    id: 3,
+    name: 'Apple',
+    price: 50,
+  },
+  {
+    id: 4,
+    name: 'Orange',
+    price: 40,
+  },
+]
+
+// Create Array Collection
+const Data = new Collection(fruits, 'id')
+```
+
+
+## avg
+```javascript
+Data.avg('price') // result = 52.5
+```
+
+## count
+```javascript
+Data.count() // result = 4
+```
+
+## delete
+```javascript
+Data.delete(2) // result = 52.5
+
+/*
+fruits = [
+  {
+    id: 1,
+    name: 'Mango',
+    price: 20,
+  },
+  {
+    id: 3,
+    name: 'Apple',
+    price: 50,
+  },
+  {
+    id: 4,
+    name: 'Orange',
+    price: 40,
+  }
+]
+*/
+```
+
+## find
+```javascript
+Data.find(2)
+
+/*
+fruits = [
+  {
+    id: 2,
+    name: 'Banana',
+    price: 100,
+  }
+]
+*/
+```
+
+
 ## Example
 ```javascript
 const Data = new Collection([1,2,3,4], 'primaryKey')
