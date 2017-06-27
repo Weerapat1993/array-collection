@@ -27,25 +27,25 @@ import Collection from 'array-collection'
 |---|---|---|
 |[delete](#delete)|`primaryKey`|`any`|
 |[insert](#insert)|`newData`|`object`|
-|[orderBy](#orderBy)|`field` , `sort`|`asc|desc`|
+|[orderBy](#orderBy)|`field` , `sort`|`asc desc`|
 |[select](#select)|`field`|`string`|
 |[update](#update)|`updateData`|`object`|
-|[where](#where)|`field` , `condition` , `key`|`string` , `condition` , `string|number`|
-|[whereIn](#whereIn)|`field` , `keyArray`|`[string|number]`|
-|[whereNotIn](#whereNotIn)|`field` , `keyArray`|`[string|number]`|
+|[where](#where)|`field` , `condition` , `key`|`string` , `condition` , `string number`|
+|[whereIn](#whereIn)|`field` , `keyArray`|`[string number]`|
+|[whereNotIn](#whereNotIn)|`field` , `keyArray`|`[string number]`|
 
 ### Return Data 
 
 
 |Functions|Parameters|Types|Return|
 |---|---|---|---|
-|[avg](#avg)                |`field`|`string|number`|`number`|
+|[avg](#avg)                |`field`|`string number`|`number`|
 |[count](#count)            |null   |null|`number`|
 |[first](#first)            |null   |null|`{}`|
 |[firstOrFail](#firstOrFail)|null   |null|`{}`|
-|[get](#get)                |`field`|`string|number`|`[]`|
-|[max](#max)                |`field`|`string|number`|`number`|
-|[min](#min)                |`field`|`string|number`|`number`|
+|[get](#get)                |`field`|`string number`|`[]`|
+|[max](#max)                |`field`|`string number`|`number`|
+|[min](#min)                |`field`|`string number`|`number`|
 |[toArray](#toArray)        |null   |null|`[]`|
 
 ## Data Example
