@@ -1,4 +1,4 @@
-import Collection from '../index'
+const Collection = require('../index')
 
 const chatID = 1
 const data = [
@@ -73,10 +73,7 @@ describe ('Array Collection Utility', () => {
     const recieved = collects.where(field, '=', chatID).update(updateDataField)
     const findData = collects.where(field, '=', chatID).firstOrFail()
     const expected = [
-      {
-        ...findData,
-        ...updateDataField,
-      }
+      Object.assign({}, findData, updateDataField)
     ]
     expect(recieved).toEqual(expected)
   });
@@ -217,6 +214,37 @@ describe ('Array Collection Utility', () => {
     const recieved = collects.insert(newData)
     const expected = [
       newData
+    ]
+    expect(recieved).toEqual(expected)
+  });
+  it(`should be Array Collection Function : insert data has been taken`, () => {
+    const collects = new Collection([newData], primaryKey)
+    const recieved = collects.insert(newData)
+    const expected = [
+      newData
+    ]
+    expect(recieved).toEqual(expected)
+  });
+
+  it(`should be Array Collection Function : delete data has been taken`, () => {
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.delete(4)
+    const expected = [
+      {
+        id: 1,
+        name: 'Mango',
+        price: 20,
+      },
+      {
+        id: 2,
+        name: 'Banana',
+        price: 100,
+      },
+      {
+        id: 3,
+        name: 'Apple',
+        price: 50,
+      },
     ]
     expect(recieved).toEqual(expected)
   });

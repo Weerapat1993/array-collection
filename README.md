@@ -1,6 +1,25 @@
 # Array Collection
 
-`Build Collection`
+## How to Install
+
+1. Add Dependency in package.json
+```json
+  "dependencies": {
+    "array-collection": "git+https://github.com/Weerapat1993/array-collection.git",
+  }
+```
+
+2. install NPM
+```linux
+$ npm install
+```
+
+3. import file in Project
+```javascript
+import Collection from 'array-collection'
+```
+
+## Example
 ```javascript
 const Data = new Collection([1,2,3,4], 'primaryKey')
 
@@ -23,7 +42,11 @@ Data.where('id', '=', 1).update({
   name: 'Update String'
 })
 
+// Delete Data => []
+Data.delete(1)
+
 // Compact Data
 Data.get() => []
 Data.firstOrFail() => {} || Array[0]
+Data.count() => number
 ```

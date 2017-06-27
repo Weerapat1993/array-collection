@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Weerapat1993/array-collection.git"
   },
   "keywords": [
-    "array"
+    "array-collection"
   ],
   "author": "Weerapat1993",
   "license": "MIT",
@@ -21,19 +21,7 @@
   },
   "homepage": "https://github.com/Weerapat1993/array-collection#readme",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^20.0.3",
-    "babel-loader": "^7.1.0",
-    "babel-preset-react-app": "^3.0.0",
-    "grunt": "^1.0.1",
     "jest": "^20.0.4",
     "webpack": "^3.0.0"
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
   }
 }

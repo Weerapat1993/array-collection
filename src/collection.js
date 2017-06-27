@@ -176,6 +176,8 @@ class Collection {
    * @return {[]} newArray
    */
   insert(insert) {
+    let check = this.where(this.primaryKey,'=',insert[this.primaryKey]).get().length
+    if(check) return this.data
     return [
       ...this.data,
       insert
@@ -183,11 +185,28 @@ class Collection {
   }
 
   /**
+   * Delete data by primaryKey
+   * @param {string|number} key 
+   * @return {[]} newArray
+   */
+  delete(key) {
+    return this.where(this.primaryKey,'!=', key).get()
+  }
+
+  /**
+   * Get Length of Array
+   * @return {nuumber}
+   */
+  count() {
+    return this.get().length
+  }
+
+  /**
    * Order By field in Array
    * @property orderBy - ['asc', 'desc']
    * @param {string} field
    * @param {string} orderBy
-   * @return {array} newArray
+   * @return {[]} newArray
    */
   orderBy(field, orderBy) {
     const data = this.data[0]
