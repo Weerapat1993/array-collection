@@ -2,19 +2,12 @@
 
 ## How to Install
 
-1. Add Dependency in package.json
-```json
-  "dependencies": {
-    "array-collection": "git+https://github.com/Weerapat1993/array-collection.git",
-  }
-```
-
-2. install NPM
+1. install NPM
 ```linux
-$ npm install
+$ npm install --save array-collection
 ```
 
-3. import file in Project
+2. import file in Project
 ```javascript
 import Collection from 'array-collection'
 ```
