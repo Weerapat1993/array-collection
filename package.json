@@ -3,7 +3,6 @@
   "version": "0.0.5",
   "description": "Array Collection Javascript",
   "main": "index.js",
-  "private": true,
   "scripts": {
     "test": "jest"
   },
