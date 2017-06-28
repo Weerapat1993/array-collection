@@ -1,6 +1,6 @@
 {
   "name": "array-collection",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Array Collection Javascript",
   "main": "index.js",
   "scripts": {
