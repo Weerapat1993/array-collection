@@ -27,15 +27,14 @@ import Collection from 'array-collection'
 |---|---|---|
 |[delete](#delete)|`primaryKey`|`any`|
 |[insert](#insert)|`newData`|`object`|
+|[merge](#merge)|`array`|`array`|
 |[orderBy](#orderBy)|`field` , `sort`|`asc desc`|
 |[select](#select)|`field`|`string`|
 |[update](#update)|`updateData`|`object`|
 |[where](#where)|`field` , `condition` , `key`|`string` , `condition` , `string number`|
 |[whereIn](#whereIn)|`field` , `keyArray`|`[string number]`|
-|[whereNotIn](#whereNotIn)|`field` , `keyArray`|`[string number]`|
 
 ### Return Data 
-
 
 |Functions|Parameters|Types|Return|
 |---|---|---|---|

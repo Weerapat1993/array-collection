@@ -10,6 +10,7 @@ class Collection {
    */
   constructor(data, primaryKey) {
     this.primaryKey = primaryKey ? primaryKey : 'id'
+    this.firstData = data ? data : []
     this.data = data ? data : []
   }
 
@@ -168,7 +169,7 @@ class Collection {
    */
   whereNotIn(field, keyArray) {
     let newArray = this.data
-    const whereIn = this.whereIn(field, keyArray).get()
+    const whereIn = this.whereIn(field, keyArray).toArray()
     whereIn.forEach((where) => {
       newArray =newArray.filter((item) => item[field] !== where[field])
     })
@@ -227,7 +228,7 @@ class Collection {
    * @return {[]} newArray
    */
   delete(key) {
-    return this.where(this.primaryKey,'!=', key).get()
+    return this.where(this.primaryKey,'!=', key).toArray()
   }
 
   /**
@@ -235,7 +236,7 @@ class Collection {
    * @return {nuumber}
    */
   count() {
-    return this.get().length
+    return this.toArray().length
   }
 
   /**
@@ -323,6 +324,21 @@ class Collection {
   avg(field) {
     const count = this.count()
     return this.get(field).reduce((a, b) => a + b , 0) / count
+  }
+
+  /**
+   * Merge Array as Array
+   * ```javascript
+   * Collection.merge([{ id: 1 name: 'String' }])
+   * ```
+   * @param {[]} array 
+   * @return this
+   */
+  merge(array) {
+    const dataPrimaryKey = new Collection(array, this.primaryKey).get(this.primaryKey)
+    const oldData = this.whereNotIn(this.primaryKey,dataPrimaryKey).get()
+    this.data = oldData.concat(array)
+    return this    
   }
 }
 

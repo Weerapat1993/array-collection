@@ -426,4 +426,50 @@ describe ('Array Collection Utility', () => {
     const expected = 52.5
     expect(recieved).toEqual(expected)
   });
+
+   it(`should be Array Collection Function : merge`, () => {
+    const fruits2 = [
+      {
+        id: 4,
+        name: 'Orange2',
+        price: 70,
+      },
+      {
+        id: 5,
+        name: 'Pine Apple',
+        price: 120,
+      },
+    ]
+    
+    const collects = new Collection(fruits, 'id')
+    const recieved = collects.merge(fruits2).orderBy('id','asc').toArray()
+    const expected = [
+      {
+        id: 1,
+        name: 'Mango',
+        price: 20,
+      },
+      {
+        id: 2,
+        name: 'Banana',
+        price: 100,
+      },
+      {
+        id: 3,
+        name: 'Apple',
+        price: 50,
+      },
+      {
+        id: 4,
+        name: 'Orange2',
+        price: 70,
+      },
+      {
+        id: 5,
+        name: 'Pine Apple',
+        price: 120,
+      },
+    ]
+    expect(recieved).toEqual(expected)
+  });
 });
