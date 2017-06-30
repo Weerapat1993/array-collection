@@ -214,8 +214,6 @@ class Collection {
    * @return {[]} newArray
    */
   insert(insert) {
-    let check = this.where(this.primaryKey,'=',insert[this.primaryKey]).count()
-    if(check) return this.data
     return [
       ...this.data,
       insert
