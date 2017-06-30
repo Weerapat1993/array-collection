@@ -9,6 +9,19 @@ const data = [
   }
 ]
 
+const data2 = [
+  {
+    chat_id: 1,
+    message: 'Hello Chat',
+    timestamp: new Date().getTime()
+  },
+  {
+    chat_id: 2,
+    message: 'Hello',
+    timestamp: new Date().getTime()
+  }
+]
+
 const newData = {
   chat_id: 2,
   message: 'Hello Chat',
@@ -16,6 +29,7 @@ const newData = {
 }
 
 const updateDataField = {
+  chat_id: 2,
   message: 'Hello Chat2'
 }
 
@@ -69,17 +83,18 @@ describe ('Array Collection Utility', () => {
     expect(recieved).toEqual(expected)
   });
   it(`should be Array Collection Function : update : find data`, () => {
-    const collects = new Collection(data, primaryKey)
-    const recieved = collects.where(field, '=', chatID).update(updateDataField)
-    const findData = collects.where(field, '=', chatID).firstOrFail()
+    const collects = new Collection(data2, primaryKey)
+    const recieved = collects.where(field, '=', 2).update(updateDataField)
+    const findData = collects.where(field, '=', 2).firstOrFail()
     const expected = [
+      ...data,
       Object.assign({}, findData, updateDataField)
     ]
     expect(recieved).toEqual(expected)
   });
   it(`should be Array Collection Function : update : not find data`, () => {
     const collects = new Collection([], primaryKey)
-    const recieved = collects.where(field, '=', chatID).update(updateDataField)
+    const recieved = collects.where(field, '=', 2).update(updateDataField)
     const expected = []
     expect(recieved).toEqual(expected)
   });
@@ -211,14 +226,6 @@ describe ('Array Collection Utility', () => {
 
   it(`should be Array Collection Function : insert`, () => {
     const collects = new Collection([], primaryKey)
-    const recieved = collects.insert(newData)
-    const expected = [
-      newData
-    ]
-    expect(recieved).toEqual(expected)
-  });
-  it(`should be Array Collection Function : insert data has been taken`, () => {
-    const collects = new Collection([newData], primaryKey)
     const recieved = collects.insert(newData)
     const expected = [
       newData
